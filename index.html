@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lindt & Sprüngli UK — Executive Logistics & Supply Chain Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0A0F18;
+    color: #F8FAFC;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+  }
+
+  /* Top Navigation Bar */
+  .top-nav {
+    width: 100%;
+    background: #0E1726;
+    border-bottom: 1.5px solid #243656;
+    padding: 14px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .nav-crest {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #C7A462;
+    letter-spacing: 2px;
+    border: 1px solid #C7A462;
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+  .nav-title-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+  .nav-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+  .nav-sub {
+    font-size: 11px;
+    color: #94A3B8;
+    letter-spacing: 0.5px;
+  }
+
+  .nav-tabs {
+    display: flex;
+    gap: 8px;
+  }
+  .nav-tab {
+    background: #162238;
+    color: #D2D8E2;
+    border: 1px solid #2B3D5E;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .nav-tab:hover {
+    background: #243656;
+    color: #FFFFFF;
+  }
+  .nav-tab.active {
+    background: #C7A462;
+    color: #0E1726;
+    border-color: #DFBF7A;
+    box-shadow: 0 0 14px rgba(199, 164, 98, 0.4);
+  }
+
+  .nav-badges {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .badge-pill {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+  }
+  .badge-live {
+    background: #11632D;
+    color: #FFFFFF;
+  }
+  .badge-tech {
+    background: #1E293B;
+    color: #C7A462;
+    border: 1px solid #C7A462;
+  }
+
+  /* Main Stage Container */
+  .stage-wrapper {
+    padding: 30px 20px 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .canvas-stage {
+    position: relative;
+    width: 1376px;
+    height: 768px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: background-image 0.3s ease;
+  }
+
+  /* 4 Top Card Visual Slots */
+  .slot-card {
+    position: absolute;
+    top: 54px;
+    width: 254px;
+    height: 128px;
+    overflow: hidden;
+  }
+  .c1 { left: 248px; }
+  .c2 { left: 528px; }
+  .c3 { left: 808px; }
+  .c4 { left: 1088px; }
+
+  /* 2 Main Visual Panels */
+  .slot-panel {
+    position: absolute;
+    top: 226px;
+    width: 536px;
+    height: 512px;
+    overflow: hidden;
+  }
+  .p-left { left: 238px; }
+  .p-right { left: 810px; }
+
+  /* Architecture & Documentation Footer Bar */
+  .doc-section {
+    width: 1376px;
+    margin-top: 40px;
+    background: #0E1726;
+    border: 1px solid #243656;
+    border-radius: 12px;
+    padding: 24px 32px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .doc-card {
+    background: #162238;
+    border: 1px solid #2B3D5E;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .doc-card h4 {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #C7A462;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+  }
+  .doc-card p {
+    font-size: 12px;
+    color: #CBD5E1;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <div class="nav-brand">
+    <div class="nav-crest">LINDT</div>
+    <div class="nav-title-wrap">
+      <span class="nav-title">Lindt & Sprüngli (UK) Logistics Intelligence</span>
+      <span class="nav-sub">Executive Supply Chain & Distribution Suite • Power BI Architecture</span>
+    </div>
+  </div>
+
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="switchPage(3, this)">Page 03 • Hubs & Seasonal Cover</button>
+  </div>
+
+  <div class="nav-badges">
+    <span class="badge-pill badge-live">&bull; Live Model</span>
+    <span class="badge-pill badge-tech">SSAS + DAX TOM</span>
+  </div>
+</div>
+
+<div class="stage-wrapper">
+  <div class="canvas-stage" id="canvasStage" style="background-image: url('assets/Lindt_Canvas_Theme_Page3.jpg');">
+    <!-- Top 4 KPI Cards -->
+    <div class="slot-card c1"><iframe srcdoc="&lt;link rel=&#x27;preconnect&#x27; href=&#x27;https://fonts.googleapis.com&#x27;&gt;
+&lt;link href=&#x27;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Playfair+Display:wght@700;800&amp;display=swap&#x27; rel=&#x27;stylesheet&#x27;&gt;
+&lt;style&gt;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: transparent !important;
+    font-family: &#x27;Plus Jakarta Sans&#x27;, sans-serif;
+  }
+  .kpi-container {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    padding: 16px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    overflow: hidden !important;
+  }
+  .kpi-title {
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    color: #7A5C30;
+    line-height: 1.2;
+    white-space: nowrap;
+    margin-bottom: 6px;
+  }
+  .kpi-value {
+    font-family: &#x27;Playfair Display&#x27;, Georgia, serif;
+    font-size: 40px;
+    font-weight: 800;
+    color: #0E1726;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    white-space: nowrap !important;
+  }
+  .hover-tooltip {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    background: linear-gradient(135deg, #0E1726 0%, #162238 100%) !important;
+    color: #FFFFFF !important;
+    padding: 12px 14px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    border-radius: 12px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: scale(0.97) !important;
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    z-index: 99 !important;
+    overflow: hidden !important;
+  }
+  .kpi-container:hover .hover-tooltip {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    pointer-events: auto !important;
+  }
+  .tooltip-tag {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #C7A462;
+    line-height: 1.1;
+  }
+  .tooltip-main {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.25;
+  }
+  .tooltip-detail {
+    font-size: 11.5px;
+    color: #D2D8E2;
+    line-height: 1.35;
+  }
+&lt;/style&gt;
+&lt;div class=&#x27;kpi-container&#x27;&gt;
+  &lt;div class=&#x27;kpi-title&#x27;&gt;AVG DWELL TIME&lt;/div&gt;
+  &lt;div class=&#x27;kpi-value&#x27;&gt;1.7 Days&lt;/div&gt;
+  &lt;div class=&#x27;hover-tooltip&#x27;&gt;
+    &lt;div class=&#x27;tooltip-tag&#x27;&gt;DC EFFICIENCY&lt;/div&gt;
+    &lt;div class=&#x27;tooltip-main&#x27;&gt;1.7 Days Turnaround&lt;/div&gt;
+    &lt;div class=&#x27;tooltip-detail&#x27;&gt;Cross-dock flow at Feltham Hub held well below 2.5d target.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;" style="width:100%; height:100%; border:none; background:transparent;" scrolling="no"></iframe></div>
+    <div class="slot-card c2"><iframe srcdoc="&lt;link rel=&#x27;preconnect&#x27; href=&#x27;https://fonts.googleapis.com&#x27;&gt;
+&lt;link href=&#x27;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Playfair+Display:wght@700;800&amp;display=swap&#x27; rel=&#x27;stylesheet&#x27;&gt;
+&lt;style&gt;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: transparent !important;
+    font-family: &#x27;Plus Jakarta Sans&#x27;, sans-serif;
+  }
+  .kpi-container {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    padding: 16px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    overflow: hidden !important;
+  }
+  .kpi-title {
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    color: #7A5C30;
+    line-height: 1.2;
+    white-space: nowrap;
+    margin-bottom: 6px;
+  }
+  .kpi-value {
+    font-family: &#x27;Playfair Display&#x27;, Georgia, serif;
+    font-size: 40px;
+    font-weight: 800;
+    color: #0E1726;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    white-space: nowrap !important;
+  }
+  .hover-tooltip {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    background: linear-gradient(135deg, #0E1726 0%, #162238 100%) !important;
+    color: #FFFFFF !important;
+    padding: 12px 14px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    border-radius: 12px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: scale(0.97) !important;
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    z-index: 99 !important;
+    overflow: hidden !important;
+  }
+  .kpi-container:hover .hover-tooltip {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    pointer-events: auto !important;
+  }
+  .tooltip-tag {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #C7A462;
+    line-height: 1.1;
+  }
+  .tooltip-main {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.25;
+  }
+  .tooltip-detail {
+    font-size: 11.5px;
+    color: #D2D8E2;
+    line-height: 1.35;
+  }
+&lt;/style&gt;
+&lt;div class=&#x27;kpi-container&#x27;&gt;
+  &lt;div class=&#x27;kpi-title&#x27;&gt;STOCK ON HAND&lt;/div&gt;
+  &lt;div class=&#x27;kpi-value&#x27;&gt;45,797 Cases&lt;/div&gt;
+  &lt;div class=&#x27;hover-tooltip&#x27;&gt;
+    &lt;div class=&#x27;tooltip-tag&#x27;&gt;BUFFER RESERVE&lt;/div&gt;
+    &lt;div class=&#x27;tooltip-main&#x27;&gt;45.8k Cases Staged&lt;/div&gt;
+    &lt;div class=&#x27;tooltip-detail&#x27;&gt;Active finished goods inventory across Feltham and regional depots.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;" style="width:100%; height:100%; border:none; background:transparent;" scrolling="no"></iframe></div>
+    <div class="slot-card c3"><iframe srcdoc="&lt;link rel=&#x27;preconnect&#x27; href=&#x27;https://fonts.googleapis.com&#x27;&gt;
+&lt;link href=&#x27;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Playfair+Display:wght@700;800&amp;display=swap&#x27; rel=&#x27;stylesheet&#x27;&gt;
+&lt;style&gt;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: transparent !important;
+    font-family: &#x27;Plus Jakarta Sans&#x27;, sans-serif;
+  }
+  .kpi-container {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    padding: 16px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    overflow: hidden !important;
+  }
+  .kpi-title {
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    color: #7A5C30;
+    line-height: 1.2;
+    white-space: nowrap;
+    margin-bottom: 6px;
+  }
+  .kpi-value {
+    font-family: &#x27;Playfair Display&#x27;, Georgia, serif;
+    font-size: 40px;
+    font-weight: 800;
+    color: #0E1726;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    white-space: nowrap !important;
+  }
+  .hover-tooltip {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    background: linear-gradient(135deg, #0E1726 0%, #162238 100%) !important;
+    color: #FFFFFF !important;
+    padding: 12px 14px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    border-radius: 12px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: scale(0.97) !important;
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    z-index: 99 !important;
+    overflow: hidden !important;
+  }
+  .kpi-container:hover .hover-tooltip {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    pointer-events: auto !important;
+  }
+  .tooltip-tag {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #C7A462;
+    line-height: 1.1;
+  }
+  .tooltip-main {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.25;
+  }
+  .tooltip-detail {
+    font-size: 11.5px;
+    color: #D2D8E2;
+    line-height: 1.35;
+  }
+&lt;/style&gt;
+&lt;div class=&#x27;kpi-container&#x27;&gt;
+  &lt;div class=&#x27;kpi-title&#x27;&gt;DAYS OF COVER&lt;/div&gt;
+  &lt;div class=&#x27;kpi-value&#x27;&gt;14.8 Days&lt;/div&gt;
+  &lt;div class=&#x27;hover-tooltip&#x27;&gt;
+    &lt;div class=&#x27;tooltip-tag&#x27;&gt;SUPPLY SECURITY&lt;/div&gt;
+    &lt;div class=&#x27;tooltip-main&#x27;&gt;14.8 Days Cover&lt;/div&gt;
+    &lt;div class=&#x27;tooltip-detail&#x27;&gt;Dynamic buffer cover calibrated for Easter and seasonal surges.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;" style="width:100%; height:100%; border:none; background:transparent;" scrolling="no"></iframe></div>
+    <div class="slot-card c4"><iframe srcdoc="&lt;link rel=&#x27;preconnect&#x27; href=&#x27;https://fonts.googleapis.com&#x27;&gt;
+&lt;link href=&#x27;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Playfair+Display:wght@700;800&amp;display=swap&#x27; rel=&#x27;stylesheet&#x27;&gt;
+&lt;style&gt;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: transparent !important;
+    font-family: &#x27;Plus Jakarta Sans&#x27;, sans-serif;
+  }
+  .kpi-container {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    padding: 16px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    overflow: hidden !important;
+  }
+  .kpi-title {
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    color: #7A5C30;
+    line-height: 1.2;
+    white-space: nowrap;
+    margin-bottom: 6px;
+  }
+  .kpi-value {
+    font-family: &#x27;Playfair Display&#x27;, Georgia, serif;
+    font-size: 40px;
+    font-weight: 800;
+    color: #0E1726;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    white-space: nowrap !important;
+  }
+  .hover-tooltip {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    background: linear-gradient(135deg, #0E1726 0%, #162238 100%) !important;
+    color: #FFFFFF !important;
+    padding: 12px 14px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    border-radius: 12px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: scale(0.97) !important;
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    z-index: 99 !important;
+    overflow: hidden !important;
+  }
+  .kpi-container:hover .hover-tooltip {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    pointer-events: auto !important;
+  }
+  .tooltip-tag {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #C7A462;
+    line-height: 1.1;
+  }
+  .tooltip-main {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.25;
+  }
+  .tooltip-detail {
+    font-size: 11.5px;
+    color: #D2D8E2;
+    line-height: 1.35;
+  }
+&lt;/style&gt;
+&lt;div class=&#x27;kpi-container&#x27;&gt;
+  &lt;div class=&#x27;kpi-title&#x27;&gt;SAFETY COMPLIANCE&lt;/div&gt;
+  &lt;div class=&#x27;kpi-value&#x27;&gt;100.0%&lt;/div&gt;
+  &lt;div class=&#x27;hover-tooltip&#x27;&gt;
+    &lt;div class=&#x27;tooltip-tag&#x27;&gt;SERVICE LEVEL&lt;/div&gt;
+    &lt;div class=&#x27;tooltip-main&#x27;&gt;100.0% Compliant&lt;/div&gt;
+    &lt;div class=&#x27;tooltip-detail&#x27;&gt;Zero stockouts across all tier-1 UK supermarket fulfillment routes.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;" style="width:100%; height:100%; border:none; background:transparent;" scrolling="no"></iframe></div>
+
+    <!-- 2 Main Panels -->
+    <div class="slot-panel p-left"><iframe srcdoc="&lt;link rel=&#x27;preconnect&#x27; href=&#x27;https://fonts.googleapis.com&#x27;&gt;
+&lt;link href=&#x27;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Playfair+Display:wght@700;800&amp;display=swap&#x27; rel=&#x27;stylesheet&#x27;&gt;
+&lt;style&gt;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: transparent !important;
+    font-family: &#x27;Plus Jakarta Sans&#x27;, sans-serif;
+  }
+  .panel-wrap {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    padding: 22px 24px 20px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    background: transparent !important;
+    overflow: hidden !important;
+  }
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    flex-shrink: 0;
+  }
+  .panel-title {
+    font-family: &#x27;Playfair Display&#x27;, Georgia, serif;
+    font-size: 23px;
+    font-weight: 700;
+    color: #0E1726;
+    letter-spacing: -0.2px;
+  }
+  .badge-tag {
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #7A5C30;
+    background: #F4EEDF;
+    border: 1px solid #D6CCA9;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .hubs-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    gap: 12px;
+  }
+  .hub-card {
+    background: #FAF8F5;
+    border: 1.5px solid #EAE3D2;
+    border-radius: 9px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+  .hub-card:hover {
+    background: #FFFFFF;
+    border-color: #C7A462;
+    transform: translateX(4px);
+    box-shadow: 0 6px 18px rgba(14, 23, 38, 0.08);
+  }
+  .hub-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .hub-name-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hub-badge {
+    background: #0E1726;
+    color: #FFFFFF;
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 2.5px 7px;
+    border-radius: 5px;
+    flex-shrink: 0;
+  }
+  .hub-name {
+    font-size: 16.5px;
+    font-weight: 700;
+    color: #0E1726;
+    white-space: nowrap;
+  }
+  .hub-stats {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+  .hub-cap {
+    font-family: &#x27;Playfair Display&#x27;, Georgia, serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #0E1726;
+    white-space: nowrap;
+  }
+  .badge-util {
+    font-size: 12px;
+    font-weight: 700;
+    color: #11632D;
+    background: #EAF7EE;
+    border: 1px solid #BCE3C8;
+    padding: 2.5px 8px;
+    border-radius: 7px;
+    white-space: nowrap;
+  }
+  .hub-meta {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr 1.15fr;
+    gap: 8px;
+    font-size: 13px;
+    color: #5A6A80;
+  }
+  .hub-meta b {
+    color: #0E1726;
+    font-weight: 700;
+    font-size: 13.5px;
+  }
+  .progress-track {
+    height: 6px;
+    background: #EAE3D2;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #C7A462 0%, #A67C52 100%);
+    border-radius: 3px;
+    transition: width 0.6s ease;
+  }
+&lt;/style&gt;
+&lt;div class=&#x27;panel-wrap&#x27;&gt;
+  &lt;div class=&#x27;panel-header&#x27;&gt;
+    &lt;span class=&#x27;panel-title&#x27;&gt;UK Distribution Hubs&lt;/span&gt;
+    &lt;span class=&#x27;badge-tag&#x27;&gt;4 FACILITIES &amp;bull; 48.5K PALLETS&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#x27;hubs-list&#x27;&gt;
+    &lt;div class=&#x27;hub-card&#x27; title=&#x27;Feltham National DC (National DC): 25,000 Pallets | 88.0% Utilized | 2.2d Dwell&#x27;&gt;&lt;div class=&#x27;hub-top&#x27;&gt;&lt;div class=&#x27;hub-name-wrap&#x27;&gt;&lt;span class=&#x27;hub-badge&#x27;&gt;UK&lt;/span&gt;&lt;span class=&#x27;hub-name&#x27;&gt;Feltham National DC&lt;/span&gt;&lt;/div&gt;&lt;div class=&#x27;hub-stats&#x27;&gt;&lt;span class=&#x27;hub-cap&#x27;&gt;25,000 Pallets&lt;/span&gt;&lt;span class=&#x27;badge-util&#x27;&gt;88.0% Utilized&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#x27;hub-meta&#x27;&gt;&lt;span&gt;Facility: &lt;b&gt;National DC&lt;/b&gt;&lt;/span&gt;&lt;span&gt;Flow: &lt;b style=&#x27;color:#11632D;&#x27;&gt;2.2d Dwell&lt;/b&gt;&lt;/span&gt;&lt;span&gt;Capacity SLA: &lt;b&gt;Optimal&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&#x27;progress-track&#x27;&gt;&lt;div class=&#x27;progress-fill&#x27; style=&#x27;width:88%;&#x27;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#x27;hub-card&#x27; title=&#x27;Midlands Regional Hub (Cross-Dock): 12,000 Pallets | 76.0% Utilized | 1.5d Dwell&#x27;&gt;&lt;div class=&#x27;hub-top&#x27;&gt;&lt;div class=&#x27;hub-name-wrap&#x27;&gt;&lt;span class=&#x27;hub-badge&#x27;&gt;UK&lt;/span&gt;&lt;span class=&#x27;hub-name&#x27;&gt;Midlands Regional Hub&lt;/span&gt;&lt;/div&gt;&lt;div class=&#x27;hub-stats&#x27;&gt;&lt;span class=&#x27;hub-cap&#x27;&gt;12,000 Pallets&lt;/span&gt;&lt;span class=&#x27;badge-util&#x27;&gt;76.0% Utilized&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#x27;hub-meta&#x27;&gt;&lt;span&gt;Facility: &lt;b&gt;Cross-Dock&lt;/b&gt;&lt;/span&gt;&lt;span&gt;Flow: &lt;b style=&#x27;color:#11632D;&#x27;&gt;1.5d Dwell&lt;/b&gt;&lt;/span&gt;&lt;span&gt;Capacity SLA: &lt;b&gt;Optimal&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&#x27;progress-track&#x27;&gt;&lt;div class=&#x27;progress-fill&#x27; style=&#x27;width:76%;&#x27;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#x27;hub-card&#x27; title=&#x27;North &amp; Scotland Hub (Regional): 8,000 Pallets | 64.0% Utilized | 2.0d Dwell&#x27;&gt;&lt;div class=&#x27;hub-top&#x27;&gt;&lt;div class=&#x27;hub-name-wrap&#x27;&gt;&lt;span class=&#x27;hub-badge&#x27;&gt;UK&lt;/span&gt;&lt;span class=&#x27;hub-name&#x27;&gt;North &amp; Scotland Hub&lt;/span&gt;&lt;/div&gt;&lt;div class=&#x27;hub-stats&#x27;&gt;&lt;span class=&#x27;hub-cap&#x27;&gt;8,000 Pallets&lt;/span&gt;&lt;span class=&#x27;badge-util&#x27;&gt;64.0% Utilized&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#x27;hub-meta&#x27;&gt;&lt;span&gt;Facility: &lt;b&gt;Regional&lt;/b&gt;&lt;/span&gt;&lt;span&gt;Flow: &lt;b style=&#x27;color:#11632D;&#x27;&gt;2.0d Dwell&lt;/b&gt;&lt;/span&gt;&lt;span&gt;Capacity SLA: &lt;b&gt;Optimal&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&#x27;progress-track&#x27;&gt;&lt;div class=&#x27;progress-fill&#x27; style=&#x27;width:64%;&#x27;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#x27;hub-card&#x27; title=&#x27;Lindt Retail Fleet (Retail Fleet): 3,500 Pallets | 64.0% Utilized | 1.2d Dwell&#x27;&gt;&lt;div class=&#x27;hub-top&#x27;&gt;&lt;div class=&#x27;hub-name-wrap&#x27;&gt;&lt;span class=&#x27;hub-badge&#x27;&gt;UK&lt;/span&gt;&lt;span class=&#x27;hub-name&#x27;&gt;Lindt Retail Fleet&lt;/span&gt;&lt;/div&gt;&lt;div class=&#x27;hub-stats&#x27;&gt;&lt;span class=&#x27;hub-cap&#x27;&gt;3,500 Pallets&lt;/span&gt;&lt;span class=&#x27;badge-util&#x27;&gt;64.0% Utilized&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#x27;hub-meta&#x27;&gt;&lt;span&gt;Facility: &lt;b&gt;Retail Fleet&lt;/b&gt;&lt;/span&gt;&lt;span&gt;Flow: &lt;b style=&#x27;color:#11632D;&#x27;&gt;1.2d Dwell&lt;/b&gt;&lt;/span&gt;&lt;span&gt;Capacity SLA: &lt;b&gt;Optimal&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&#x27;progress-track&#x27;&gt;&lt;div class=&#x27;progress-fill&#x27; style=&#x27;width:64%;&#x27;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;" style="width:100%; height:100%; border:none; background:transparent;" scrolling="no"></iframe></div>
+    <div class="slot-panel p-right"><iframe srcdoc="&lt;link rel=&#x27;preconnect&#x27; href=&#x27;https://fonts.googleapis.com&#x27;&gt;
+&lt;link href=&#x27;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Playfair+Display:wght@700;800&amp;display=swap&#x27; rel=&#x27;stylesheet&#x27;&gt;
+&lt;style&gt;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: transparent !important;
+    font-family: &#x27;Plus Jakarta Sans&#x27;, sans-serif;
+  }
+  .panel-wrap {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    padding: 22px 24px 20px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    background: transparent !important;
+    overflow: hidden !important;
+  }
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    flex-shrink: 0;
+  }
+  .panel-title {
+    font-family: &#x27;Playfair Display&#x27;, Georgia, serif;
+    font-size: 23px;
+    font-weight: 700;
+    color: #0E1726;
+    letter-spacing: -0.2px;
+  }
+  .badge-tag {
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #7A5C30;
+    background: #F4EEDF;
+    border: 1px solid #D6CCA9;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .chart-area {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .chart-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .ramp-bar {
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+    cursor: pointer;
+  }
+  .ramp-bar:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+  }
+  .val {
+    font-family: &#x27;Plus Jakarta Sans&#x27;, sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    fill: #0E1726;
+    text-anchor: middle;
+  }
+  .lbl {
+    font-family: &#x27;Plus Jakarta Sans&#x27;, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    fill: #5A6A80;
+    text-anchor: middle;
+  }
+  .peak-tag {
+    font-family: &#x27;Plus Jakarta Sans&#x27;, sans-serif;
+    font-size: 10.5px;
+    font-weight: 800;
+    fill: #7A5C30;
+    text-anchor: middle;
+    letter-spacing: 0.6px;
+  }
+&lt;/style&gt;
+&lt;div class=&#x27;panel-wrap&#x27;&gt;
+  &lt;div class=&#x27;panel-header&#x27;&gt;
+    &lt;span class=&#x27;panel-title&#x27;&gt;Seasonal Stock Cover Ramp&lt;/span&gt;
+    &lt;span class=&#x27;badge-tag&#x27;&gt;MONTHLY BUFFER TREND&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&#x27;chart-area&#x27;&gt;
+    &lt;svg class=&#x27;chart-svg&#x27; viewBox=&#x27;0 0 460 300&#x27; preserveAspectRatio=&#x27;xMidYMid meet&#x27;&gt;
+      &lt;defs&gt;
+        &lt;linearGradient id=&#x27;goldBar&#x27; x1=&#x27;0&#x27; y1=&#x27;0&#x27; x2=&#x27;0&#x27; y2=&#x27;1&#x27;&gt;
+          &lt;stop offset=&#x27;0%&#x27; stop-color=&#x27;#C7A462&#x27;/&gt;
+          &lt;stop offset=&#x27;100%&#x27; stop-color=&#x27;#A67C52&#x27;/&gt;
+        &lt;/linearGradient&gt;
+        &lt;linearGradient id=&#x27;peakBar&#x27; x1=&#x27;0&#x27; y1=&#x27;0&#x27; x2=&#x27;0&#x27; y2=&#x27;1&#x27;&gt;
+          &lt;stop offset=&#x27;0%&#x27; stop-color=&#x27;#243656&#x27;/&gt;
+          &lt;stop offset=&#x27;100%&#x27; stop-color=&#x27;#0E1726&#x27;/&gt;
+        &lt;/linearGradient&gt;
+      &lt;/defs&gt;
+
+      &lt;!-- Baseline and Grid --&gt;
+      &lt;line x1=&#x27;30&#x27; y1=&#x27;75&#x27; x2=&#x27;440&#x27; y2=&#x27;75&#x27; stroke=&#x27;#EAE3D2&#x27; stroke-width=&#x27;1&#x27; stroke-dasharray=&#x27;4,4&#x27;/&gt;
+      &lt;line x1=&#x27;30&#x27; y1=&#x27;145&#x27; x2=&#x27;440&#x27; y2=&#x27;145&#x27; stroke=&#x27;#EAE3D2&#x27; stroke-width=&#x27;1&#x27; stroke-dasharray=&#x27;4,4&#x27;/&gt;
+      &lt;line x1=&#x27;30&#x27; y1=&#x27;220&#x27; x2=&#x27;440&#x27; y2=&#x27;220&#x27; stroke=&#x27;#EAE3D2&#x27; stroke-width=&#x27;1.5&#x27;/&gt;
+
+      &lt;!-- Bars --&gt;
+      &lt;g class=&#x27;ramp-bar&#x27;&gt;
+        &lt;text class=&#x27;val&#x27; x=&#x27;60&#x27; y=&#x27;130&#x27;&gt;10.2d&lt;/text&gt;
+        &lt;rect x=&#x27;42&#x27; y=&#x27;142&#x27; width=&#x27;36&#x27; height=&#x27;78&#x27; rx=&#x27;5&#x27; fill=&#x27;url(#goldBar)&#x27;/&gt;
+        &lt;text class=&#x27;lbl&#x27; x=&#x27;60&#x27; y=&#x27;242&#x27;&gt;Sep&lt;/text&gt;
+      &lt;/g&gt;
+
+      &lt;g class=&#x27;ramp-bar&#x27;&gt;
+        &lt;text class=&#x27;val&#x27; x=&#x27;110&#x27; y=&#x27;110&#x27;&gt;12.8d&lt;/text&gt;
+        &lt;rect x=&#x27;92&#x27; y=&#x27;122&#x27; width=&#x27;36&#x27; height=&#x27;98&#x27; rx=&#x27;5&#x27; fill=&#x27;url(#goldBar)&#x27;/&gt;
+        &lt;text class=&#x27;lbl&#x27; x=&#x27;110&#x27; y=&#x27;242&#x27;&gt;Oct&lt;/text&gt;
+      &lt;/g&gt;
+
+      &lt;g class=&#x27;ramp-bar&#x27;&gt;
+        &lt;text class=&#x27;val&#x27; x=&#x27;160&#x27; y=&#x27;82&#x27;&gt;16.5d&lt;/text&gt;
+        &lt;rect x=&#x27;142&#x27; y=&#x27;94&#x27; width=&#x27;36&#x27; height=&#x27;126&#x27; rx=&#x27;5&#x27; fill=&#x27;url(#goldBar)&#x27;/&gt;
+        &lt;text class=&#x27;lbl&#x27; x=&#x27;160&#x27; y=&#x27;242&#x27;&gt;Nov&lt;/text&gt;
+      &lt;/g&gt;
+
+      &lt;g class=&#x27;ramp-bar&#x27;&gt;
+        &lt;text class=&#x27;peak-tag&#x27; x=&#x27;210&#x27; y=&#x27;50&#x27;&gt;XMAS PEAK&lt;/text&gt;
+        &lt;text class=&#x27;val&#x27; x=&#x27;210&#x27; y=&#x27;66&#x27;&gt;18.2d&lt;/text&gt;
+        &lt;rect x=&#x27;192&#x27; y=&#x27;74&#x27; width=&#x27;36&#x27; height=&#x27;146&#x27; rx=&#x27;5&#x27; fill=&#x27;url(#peakBar)&#x27;/&gt;
+        &lt;text class=&#x27;lbl&#x27; x=&#x27;210&#x27; y=&#x27;242&#x27;&gt;Dec&lt;/text&gt;
+      &lt;/g&gt;
+
+      &lt;g class=&#x27;ramp-bar&#x27;&gt;
+        &lt;text class=&#x27;val&#x27; x=&#x27;260&#x27; y=&#x27;106&#x27;&gt;13.4d&lt;/text&gt;
+        &lt;rect x=&#x27;242&#x27; y=&#x27;118&#x27; width=&#x27;36&#x27; height=&#x27;102&#x27; rx=&#x27;5&#x27; fill=&#x27;url(#goldBar)&#x27;/&gt;
+        &lt;text class=&#x27;lbl&#x27; x=&#x27;260&#x27; y=&#x27;242&#x27;&gt;Jan&lt;/text&gt;
+      &lt;/g&gt;
+
+      &lt;g class=&#x27;ramp-bar&#x27;&gt;
+        &lt;text class=&#x27;val&#x27; x=&#x27;310&#x27; y=&#x27;88&#x27;&gt;15.6d&lt;/text&gt;
+        &lt;rect x=&#x27;292&#x27; y=&#x27;100&#x27; width=&#x27;36&#x27; height=&#x27;120&#x27; rx=&#x27;5&#x27; fill=&#x27;url(#goldBar)&#x27;/&gt;
+        &lt;text class=&#x27;lbl&#x27; x=&#x27;310&#x27; y=&#x27;242&#x27;&gt;Feb&lt;/text&gt;
+      &lt;/g&gt;
+
+      &lt;g class=&#x27;ramp-bar&#x27;&gt;
+        &lt;text class=&#x27;peak-tag&#x27; x=&#x27;360&#x27; y=&#x27;54&#x27;&gt;EASTER PEAK&lt;/text&gt;
+        &lt;text class=&#x27;val&#x27; x=&#x27;360&#x27; y=&#x27;70&#x27;&gt;17.8d&lt;/text&gt;
+        &lt;rect x=&#x27;342&#x27; y=&#x27;78&#x27; width=&#x27;36&#x27; height=&#x27;142&#x27; rx=&#x27;5&#x27; fill=&#x27;url(#peakBar)&#x27;/&gt;
+        &lt;text class=&#x27;lbl&#x27; x=&#x27;360&#x27; y=&#x27;242&#x27;&gt;Mar&lt;/text&gt;
+      &lt;/g&gt;
+
+      &lt;g class=&#x27;ramp-bar&#x27;&gt;
+        &lt;text class=&#x27;val&#x27; x=&#x27;410&#x27; y=&#x27;122&#x27;&gt;11.2d&lt;/text&gt;
+        &lt;rect x=&#x27;392&#x27; y=&#x27;134&#x27; width=&#x27;36&#x27; height=&#x27;86&#x27; rx=&#x27;5&#x27; fill=&#x27;url(#goldBar)&#x27;/&gt;
+        &lt;text class=&#x27;lbl&#x27; x=&#x27;410&#x27; y=&#x27;242&#x27;&gt;Apr&lt;/text&gt;
+      &lt;/g&gt;
+    &lt;/svg&gt;
+  &lt;/div&gt;
+&lt;/div&gt;" style="width:100%; height:100%; border:none; background:transparent;" scrolling="no"></iframe></div>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-card">
+      <h4>Bespoke DAX Micro-Visuals</h4>
+      <p>Custom HTML5 & SVG components evaluated dynamically within DAX measures. Bypasses Power BI default visual boundaries to eliminate clutter.</p>
+    </div>
+    <div class="doc-card">
+      <h4>Tabular Model Automation</h4>
+      <p>Automated deployment via PowerShell & Tabular Object Model (TOM) directly targeting SSAS / Power BI local engine without manual report clicks.</p>
+    </div>
+    <div class="doc-card">
+      <h4>Supply Chain Domain KPIs</h4>
+      <p>Tracks OTIF compliance across tier-1 UK supermarkets, DC cross-dock dwell times (<2.5d SLA), and seasonal chocolate buffer surges (Easter/Xmas).</p>
+    </div>
+    <div class="doc-card">
+      <h4>Executive Design System</h4>
+      <p>Tailored luxury branding: Playfair Display serif numbers, warm ivory embossed panels, and responsive interactive hover tooltips.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchPage(pageNumber, tabEl) {
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  tabEl.classList.add('active');
+  document.getElementById('canvasStage').style.backgroundImage = `url('assets/Lindt_Canvas_Theme_Page${pageNumber}.jpg')`;
+}
+</script>
+
+</body>
+</html>
